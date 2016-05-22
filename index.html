@@ -1,0 +1,83 @@
+<!-- This is a mini-project for the JavaScript Design Patterns unit. 
+    It revises the previous app by using the Knockout JS library. 
+    Each element is bound to functions defined in the ViewModel. 
+    These connections look clean and logical thanks to Knockout. -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cat Clicker</title>
+        <link rel="stylesheet" href="bootstrap.css">
+    </head>
+    <body>
+        <main class="container-fluid center-block text-center">
+
+            <!-- Establish a context to bind with chosenCat in this section. -->
+            <section data-bind="with: chosenCat">
+
+                <header class="col-lg-3">
+                    <h1><b>Cat Clicker</b></h1>
+                    <h4>Another Udacity Minicourse Project</h4>
+                    <hr>
+                    <!-- Bindings enable chosenCat property values to display. 
+                        chosenCat inherits properties from Cat constructor. -->
+                    <h3 data-bind="text: name"></h3>
+                    <h3 data-bind="text: score"></h3>
+                    <h3 data-bind="text: title"></h3>
+                    <hr>
+                    <h5><b>Nicknames</b></h5>
+                    <table align="center">
+                        <!-- Here the binding loops over multiple data items. -->
+                        <tbody data-bind="foreach: nicknames">
+                            <tr>
+                                <td data-bind="text: $data"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    &nbsp;
+                </header>
+
+                <figure class="col-lg-6">
+                    <!-- The current context of all bindings is chosenCat, 
+                        which is inside ViewModel. However, the incrementScore 
+                        function is in ViewModel itself, so the $parent query 
+                        takes the binding up one level within the context. -->
+                    <img class="img-responsive" src="" alt="cute cat" data-bind="attr: {src: imgSrc}, click: $parent.incrementScore">
+                    <span class="text-muted" data-bind="text: imgAttribution"></span>
+                    <p class="text-muted">
+                        No cats were harmed during the development of this site.
+                    </p>
+                    <hr>
+                </figure>
+
+            <!-- Binding context for this section is the default: ViewModel. -->
+            </section>
+
+            <section>
+                <div class="col-lg-3">
+                    <h3><em>Select a cat and click on its image to increase its score!</em></h3>
+                    <hr>                    
+                    <table align="center">
+                        <!-- The tbody is bound to each new Cat in catList. -->
+                        <tbody data-bind="foreach: catList">
+                            <tr>
+                                <td>
+                                    <!-- Go up a level again for updateCat. -->
+                                    <h4><button data-bind="text: name, click: $parent.updateCat"></button></h4>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    &nbsp;
+                </div>
+            </section>
+
+        </main>
+
+        <script src="js/lib/knockout-3.2.0.js"></script>
+        <script src="js/app.js"></script>
+
+    </body>
+</html>
