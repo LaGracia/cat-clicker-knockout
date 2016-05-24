@@ -9,7 +9,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Cat Clicker</title>
-        <link rel="stylesheet" href="bootstrap.css">
+        <link href='https://fonts.googleapis.com/css?family=Noto+Sans:700,400italic,400' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="bootstrap.min.css">
     </head>
     <body>
         <main class="container-fluid center-block text-center">
@@ -19,7 +20,7 @@
 
                 <header class="col-lg-3">
                     <h1><b>Cat Clicker</b></h1>
-                    <h4>Another Udacity Minicourse Project</h4>
+                    <h5>Another Udacity Minicourse Project</h5>
                     <hr>
                     <!-- Bindings enable chosenCat property values to display. 
                         chosenCat inherits properties from Cat constructor. -->
@@ -45,7 +46,7 @@
                         function is in ViewModel itself, so the $parent query 
                         takes the binding up one level within the context. -->
                     <img class="img-responsive" src="" alt="cute cat" data-bind="attr: {src: imgSrc}, click: $parent.incrementScore">
-                    <span class="text-muted" data-bind="text: imgAttribution"></span>
+                    <sub><span class="text-muted" data-bind="text: imgAttribution"></span></sub>
                     <p class="text-muted">
                         No cats were harmed during the development of this site.
                     </p>
@@ -57,7 +58,7 @@
 
             <section>
                 <div class="col-lg-3">
-                    <h3><em>Select a cat and click on its image to increase its score!</em></h3>
+                    <h3 class="text-muted"><em>Select a cat and click on its image to increase its score!</em></h3>
                     <hr>                    
                     <table align="center">
                         <!-- The tbody is bound to each new Cat in catList. -->
@@ -65,7 +66,7 @@
                             <tr>
                                 <td>
                                     <!-- Go up a level again for updateCat. -->
-                                    <h4><button data-bind="text: name, click: $parent.updateCat"></button></h4>
+                                    <h5><b><button data-bind="text: name, click: $parent.updateCat"></button></b></h5>
                                 </td>
                             </tr>
                         </tbody>
